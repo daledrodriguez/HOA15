@@ -1,0 +1,23 @@
+---
+    - name: Install Horizon packages
+      apt:
+        name:
+          - openstack-dashboard
+        state: present
+
+    - name: Configure Apache for Horizon
+      template:
+        src: openstack-dashboard.conf.j2
+        dest: /etc/apache2/sites-available/openstack-dashboard.conf
+      notify: Restart Apache
+
+    - name: Configure Horizon settings
+      template:
+        src: local_settings.py.j2
+        dest: /etc/openstack-dashboard/local_settings.py
+      notify: Restart Apache
+
+    - name: Restart Apache
+      service:
+        name: apache2
+        state: restarted
