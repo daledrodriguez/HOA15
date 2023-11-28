@@ -1,15 +1,16 @@
 
 ---
 
-- hosts: horizon
-  become: true
-  roles:
-    - role: horizon
 
 - hosts: neutron
   become: true
   roles:
     - role: neutron
+    
+- hosts: horizon
+  become: true
+  roles:
+    - role: horizon
 
 - hosts: cinder
   become: true
