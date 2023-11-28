@@ -15,14 +15,12 @@
       template:
         src: neutron.conf.j2
         dest: /etc/neutron/neutron.conf
-      notify: Restart Neutron
 
     - name: Configure ML2 plugin
       template:
         src: ml2_conf.ini.j2
         dest: /etc/neutron/plugins/ml2/ml2_conf.ini
-      notify: Restart Neutron
-
+    
     - name: Restart Neutron
       service:
         name: neutron-server
