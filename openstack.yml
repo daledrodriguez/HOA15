@@ -1,19 +1,17 @@
-#This is the playbook for installing openstack prerequisites
 
 ---
 
-
-- hosts: keystone
+- hosts: horizon
   become: true
   roles:
-    - role: keystone
+    - role: horizon
 
-- hosts: glance
+- hosts: neutron
   become: true
   roles:
-    - role: glance
+    - role: neutron
 
-- hosts: nova
+- hosts: cinder
   become: true
   roles:
-    - role: nova
+    - role: cinder
